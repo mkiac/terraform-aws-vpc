@@ -60,12 +60,12 @@ variable "enable_dns_support" {
 variable "enable_classiclink" {
   type        = bool
   description = "A boolean flag to enable/disable ClassicLink for the VPC"
-  default     = false
+  default     = null
 }
 
 variable "enable_classiclink_dns_support" {
   type        = bool
   description = "A boolean flag to enable/disable ClassicLink DNS Support for the VPC"
-  default     = false
+  default     = null
 }
 
