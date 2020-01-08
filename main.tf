@@ -1,8 +1,28 @@
-module "label" {
-  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.14.0"
-  namespace  = var.namespace
-  name       = var.name
-  stage      = var.stage
+module "vpc_label" {
+  source     = "git::https://github.com/mkiac/terraform-null-label.git?ref=master"
+  prefix     = var.prefix
+  name       = "vpc"
+  type       = var.type
+  delimiter  = var.delimiter
+  attributes = var.attributes
+  tags       = var.tags
+}
+
+module "sg_label" {
+  source     = "git::https://github.com/mkiac/terraform-null-label.git?ref=master"
+  prefix     = var.prefix
+  name       = "sg"
+  type       = var.type
+  delimiter  = var.delimiter
+  attributes = var.attributes
+  tags       = var.tags
+}
+
+module "igw_label" {
+  source     = "git::https://github.com/mkiac/terraform-null-label.git?ref=master"
+  prefix     = var.prefix
+  name       = "igw"
+  type       = var.type
   delimiter  = var.delimiter
   attributes = var.attributes
   tags       = var.tags
@@ -16,19 +36,16 @@ resource "aws_vpc" "default" {
   enable_classiclink               = var.enable_classiclink
   enable_classiclink_dns_support   = var.enable_classiclink_dns_support
   assign_generated_ipv6_cidr_block = true
-  tags                             = module.label.tags
+  tags                             = module.vpc_label.tags
 }
 
 # If `aws_default_security_group` is not defined, it would be created implicitly with access `0.0.0.0/0`
 resource "aws_default_security_group" "default" {
   vpc_id = aws_vpc.default.id
-
-  tags = {
-    Name = "Default Security Group"
-  }
+  tags = module.vpc_label.tags
 }
 
 resource "aws_internet_gateway" "default" {
   vpc_id = aws_vpc.default.id
-  tags   = module.label.tags
+  tags   = module.igw_label.tags
 }

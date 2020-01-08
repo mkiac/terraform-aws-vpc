@@ -1,24 +1,19 @@
-variable "namespace" {
-  description = "Namespace (e.g. `cp` or `cloudposse`)"
+variable "prefix" {
+  description = "prefix (e.g. `region`)"
   type        = string
   default     = ""
 }
 
-variable "stage" {
-  description = "Stage (e.g. `prod`, `dev`, `staging`)"
+variable "type" {
+  description = "type (e.g. `prod`, `dev`, `staging`)"
   type        = string
   default     = ""
-}
-
-variable "name" {
-  description = "Name  (e.g. `app` or `cluster`)"
-  type        = string
 }
 
 variable "delimiter" {
   type        = string
   default     = "-"
-  description = "Delimiter to be used between `namespace`, `stage`, `name` and `attributes`"
+  description = "Delimiter to be used between `prefix`, `type`, `name` and `attributes`"
 }
 
 variable "attributes" {
