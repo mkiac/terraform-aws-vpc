@@ -4,12 +4,6 @@ variable "prefix" {
   default     = ""
 }
 
-variable "aws_region" {
-  description = "AWS Region"
-  type        = string
-  default     = ""
-}
-
 variable "type" {
   description = "type (e.g. `shared`, `app`)"
   type        = string
