@@ -1,31 +1,34 @@
 module "vpc_label" {
-  source     = "git::https://github.com/mkiac/terraform-null-label.git?ref=master"
-  prefix     = var.prefix
-  name       = "vpc"
-  type       = var.type
-  delimiter  = var.delimiter
-  attributes = var.attributes
-  tags       = var.tags
+  source      = "git::https://github.com/mkiac/terraform-null-label.git?ref=master"
+  prefix      = var.prefix
+  name        = "vpc"
+  type        = var.type
+  environment = var.environment
+  delimiter   = var.delimiter
+  attributes  = var.attributes
+  tags        = var.tags
 }
 
 module "sg_label" {
-  source     = "git::https://github.com/mkiac/terraform-null-label.git?ref=master"
-  prefix     = var.prefix
-  name       = "sg"
-  type       = var.type
-  delimiter  = var.delimiter
-  attributes = var.attributes
-  tags       = var.tags
+  source      = "git::https://github.com/mkiac/terraform-null-label.git?ref=master"
+  prefix      = var.prefix
+  name        = "sg"
+  type        = var.type
+  environment = var.environment
+  delimiter   = var.delimiter
+  attributes  = var.attributes
+  tags        = var.tags
 }
 
 module "igw_label" {
-  source     = "git::https://github.com/mkiac/terraform-null-label.git?ref=master"
-  prefix     = var.prefix
-  name       = "igw"
-  type       = var.type
-  delimiter  = var.delimiter
-  attributes = var.attributes
-  tags       = var.tags
+  source      = "git::https://github.com/mkiac/terraform-null-label.git?ref=master"
+  prefix      = var.prefix
+  name        = "igw"
+  type        = var.type
+  environment = var.environment
+  delimiter   = var.delimiter
+  attributes  = var.attributes
+  tags        = var.tags
 }
 
 resource "aws_vpc" "default" {
@@ -42,7 +45,7 @@ resource "aws_vpc" "default" {
 # If `aws_default_security_group` is not defined, it would be created implicitly with access `0.0.0.0/0`
 resource "aws_default_security_group" "default" {
   vpc_id = aws_vpc.default.id
-  tags = module.vpc_label.tags
+  tags   = module.vpc_label.tags
 }
 
 resource "aws_internet_gateway" "default" {

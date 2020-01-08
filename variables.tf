@@ -5,6 +5,12 @@ variable "prefix" {
 }
 
 variable "type" {
+  description = "type (e.g. `shared`, `app`)"
+  type        = string
+  default     = ""
+}
+
+variable "environment" {
   description = "type (e.g. `prod`, `dev`, `staging`)"
   type        = string
   default     = ""
