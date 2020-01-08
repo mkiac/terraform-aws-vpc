@@ -69,3 +69,8 @@ variable "enable_classiclink_dns_support" {
   default     = null
 }
 
+variable "assign_generated_ipv6_cidr_block" {
+  type        = bool
+  description = "A boolean flag to enable/disable IPV6 for the VPC"
+  default     = false
+}
