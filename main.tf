@@ -7,7 +7,7 @@ module "vpc_label" {
   delimiter   = var.delimiter
   attributes  = var.attributes
   tags        = var.tags
-  label_order = ["prefix", "name", "type", "environment", "attributes"]
+  label_order = ["prefix", "region", "name", "type", "environment", "attributes"]
 }
 
 module "sg_label" {
@@ -19,7 +19,7 @@ module "sg_label" {
   delimiter   = var.delimiter
   attributes  = var.attributes
   tags        = var.tags
-  label_order = ["prefix", "name", "type", "environment", "attributes"]
+  label_order = ["prefix", "region", "name", "type", "environment", "attributes"]
 }
 
 module "igw_label" {
@@ -31,7 +31,7 @@ module "igw_label" {
   delimiter   = var.delimiter
   attributes  = var.attributes
   tags        = var.tags
-  label_order = ["prefix", "name", "type", "environment", "attributes"]
+  label_order = ["prefix", "region", "name", "type", "environment", "attributes"]
 }
 
 resource "aws_vpc" "default" {
