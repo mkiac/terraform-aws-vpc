@@ -1,5 +1,6 @@
 module "vpc_label" {
   source      = "git::https://github.com/mkiac/terraform-null-label.git?ref=master"
+  region      = var.aws_region
   name        = "vpc"
   type        = var.type
   environment = var.environment
@@ -10,6 +11,7 @@ module "vpc_label" {
 
 module "sg_label" {
   source      = "git::https://github.com/mkiac/terraform-null-label.git?ref=master"
+  region      = var.aws_region
   name        = "sg"
   type        = var.type
   environment = var.environment
@@ -20,6 +22,7 @@ module "sg_label" {
 
 module "igw_label" {
   source      = "git::https://github.com/mkiac/terraform-null-label.git?ref=master"
+  region      = var.aws_region
   name        = "igw"
   type        = var.type
   environment = var.environment
