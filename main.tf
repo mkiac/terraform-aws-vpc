@@ -48,7 +48,7 @@ resource "aws_vpc" "default" {
 # If `aws_default_security_group` is not defined, it would be created implicitly with access `0.0.0.0/0`
 resource "aws_default_security_group" "default" {
   vpc_id = aws_vpc.default.id
-  tags   = module.vpc_label.tags
+  tags   = module.sg_label.tags
 }
 
 resource "aws_internet_gateway" "default" {
